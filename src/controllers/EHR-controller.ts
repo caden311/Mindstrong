@@ -15,7 +15,10 @@ export class EHRController implements BaseController {
     public setupRoutes(app: express.Application): void {
         app.get('/Ehr', async (req: express.Request, res: express.Response) => {
             res.send(await this.ehrService.findAllRecords());
-            // res.send(await this.ehrService.insertStuff());
+        });
+
+        app.get('/Ehr/:id', async (req: express.Request, res: express.Response) => {
+            res.send(await this.ehrService.findById(req.params.id));
         });
 
 
@@ -24,14 +27,18 @@ export class EHRController implements BaseController {
                 res.send('Invalid request body.').status(400);
             }
             const record: EHR = new EHR(req.body);
-
             res.send(await this.ehrService.updateRecord(req.params.id, record));
         });
 
 
-        // app.post('/Ehr', async (req: express.Request, res: express.Response) => {
-        //     const record: EHR = new EHR(req.body);
-        //     res.send(await this.ehrService.createRecord(record));
-        // });
+        app.post('/Ehr', async (req: express.Request, res: express.Response) => {
+            const record: EHR = new EHR(req.body);
+            res.send(await this.ehrService.createRecord(record));
+        });
+
+        app.delete('/Ehr/:id', async (req: express.Request, res: express.Response) => {
+            res.send(await this.ehrService.deleteRecord(req.params.id));
+        });
+
     }
 }
