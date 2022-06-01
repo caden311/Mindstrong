@@ -1,6 +1,7 @@
 
 # Prerequisites
 - Install Node (v16.13.0)
+- Update the .env file with correct DB connection string.
 
 # Building The App
 Within the Mindstrong directory

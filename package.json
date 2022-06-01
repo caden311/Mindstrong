@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "watch": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node src/app.ts\"",
-    "build-server": "npm i && tsc && node dist/app.js",
+    "build-server": "npm i && tsc && node dist/src/app.js",
     "build-client": "npm i --prefix ./clientApp && npm run start --prefix ./clientApp",
     "test": "npm i && jest --coverage"
   },
