@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+
+<div class="review-container">
+
+        <div class="column">
+            <h3 class="header">Please Review this case</h3>
+            <div class="info" *ngIf="currentReview < records.length">
+                {{records[currentReview].case}}
+            </div>
+            <div class="info" *ngIf="currentReview >= records.length">
+                You are Done
+            </div>
+        </div>
+        <div class="column">
+            <h3 class="header">Select Condition</h3>
+            <div class="info">
+                <ng-container *ngFor="let cond of conditions">
+                    <div (click)="selectedCondition = cond"  class="condition" [ngClass]="{'selected': cond.code === selectedCondition?.code}">
+                        {{cond.description}} ( {{cond.code}} )
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+
+    
+</div>
+
+<div class="button-container">
+    <button mat-raised-button (click)="currentReview= currentReview -1" [disabled]="currentReview == 0 || records.length == 0">Back</button>
+    <button [disabled]="!selectedCondition || currentReview >= records.length" color="primary" mat-raised-button (click)="saveCase()">Next Case</button>
+</div>
+<div class="pager" *ngIf="currentReview < records.length">
+    Viewing {{currentReview + 1}} of {{records.length}}
+</div>

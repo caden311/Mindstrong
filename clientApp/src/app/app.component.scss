@@ -1,0 +1,53 @@
+.review-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 60px;
+    .column {
+        width: 40vw;
+        .header {
+            font-size: 14pt;
+            font-weight: 500;
+        }
+        .info {
+            border-radius: 2px;
+            padding: 4px;
+            border: 1px solid lightgray;
+            max-height: 35vh;
+            height: 35vh;
+            overflow-y: auto;
+
+            .condition {
+                margin: 2px 0;
+                padding: 2px 0;
+                cursor: pointer;
+                &:hover {
+                    background-color: lightgray
+                }
+            }
+            .selected {
+                background-color: var(--mind-primary) !important;
+                color: white !important;
+            }
+        }
+    }
+}
+
+.button-container {
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+.pager {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    position: absolute;
+    bottom: 22px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14pt;
+}
